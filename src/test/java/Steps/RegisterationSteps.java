@@ -1,12 +1,17 @@
 package Steps;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.*;
+import io.cucumber.junit.Cucumber;
 import org.junit.Assert;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+@RunWith(Cucumber.class)
 public class RegisterationSteps  {
 
     WebDriver driver;
@@ -94,14 +99,7 @@ public class RegisterationSteps  {
         Assert.assertTrue("Error message password not having 6 chars ", passwordErrorMessageAtleast6Chars.equals(errorPasswordText));
 
     }
-/*
-    @Then("I enter password {string}")
-    public void i_enter_password(String passwordValue) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
 
- */
     @Then("I should be able to see error message in the password field must contain atleast one number")
     public void i_should_be_able_to_see_error_message_in_the_password_field_must_contain_atleast_one_number() {
 
@@ -119,13 +117,15 @@ public class RegisterationSteps  {
 
     }
 
-    @And("I close browser")
-    public void i_close_browser(){
+    @After
+    public void afterScenario(Scenario scenario) {
 
         if(driver != null){
             driver.close();
             driver.quit();
             driver = null;
         }
+
+        System.out.println(scenario.getStatus());
     }
 }

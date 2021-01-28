@@ -11,7 +11,6 @@ Feature: As a new moneygaming.com player I want to be able to register using my 
     Then I enter firstname 'Alex' and surname 'John' in the form
     And I click terms and condition checkbox
     Then I should be able to see error message below dob selectbox as 'This field is required'
-    And I close browser
 
   Scenario: Register a user and validate password field
     Given I enter password 'pass'
@@ -20,4 +19,3 @@ Feature: As a new moneygaming.com player I want to be able to register using my 
     Then I should be able to see error message in the password field must contain atleast one number
     And I enter password 'password1234'
     Then I should be able to see error message in the password field must contain atleast one special character
-    And I close browser
